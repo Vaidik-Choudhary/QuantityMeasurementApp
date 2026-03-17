@@ -84,7 +84,7 @@ coverage/
 *.pem
 *.crt
 *.key
-
+*.db
 
 
 
