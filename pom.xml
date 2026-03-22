@@ -64,13 +64,13 @@
             <version>1.2.11</version>
         </dependency>
 
-        <!-- MySQL JDBC Driver — commented out, for future use cases
+        <!-- MySQL JDBC Driver — commented out, for future use cases -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
-        -->
+        
 
     </dependencies>
 
