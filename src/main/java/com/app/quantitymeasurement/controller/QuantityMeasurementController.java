@@ -29,6 +29,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/quantities")
+@CrossOrigin(origins = "http://localhost:5173")
 @Tag(name = "Quantity Measurements", 
      description = "REST API for quantity measurement operations")
 public class QuantityMeasurementController {

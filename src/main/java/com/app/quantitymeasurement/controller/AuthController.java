@@ -37,6 +37,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/auth")
+@CrossOrigin(origins = "http://localhost:5173")
 @Tag(name = "Authentication",
      description = "Local registration, login, and profile endpoints. " +
                    "For Google OAuth2, navigate to /oauth2/authorization/google.")
