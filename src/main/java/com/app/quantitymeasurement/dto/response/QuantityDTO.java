@@ -145,20 +145,54 @@ public class QuantityDTO {
      *
      * @return {@code true} if the unit is valid for the measurement type
      */
+    /**
+     * Cross-field validation: verifies that {@code unit} is a valid constant for
+     * the declared {@code measurementType}.
+     *
+     * <p>Returns {@code true} when either field is {@code null} so that the
+     * {@code @NotEmpty} constraints handle the null case with their own messages.</p>
+     *
+     * <p>Uses case-insensitive matching to support flexible input (e.g., "gram", "Gram", "GRAM").</p>
+     *
+     * @return {@code true} if the unit is valid for the measurement type
+     */
     @jakarta.validation.constraints.AssertTrue(
         message = "Unit must be valid for the specified measurement type")
     public boolean isUnitValidForMeasurementType() {
         if (unit == null || measurementType == null) return true;
+        
+        String unitUpperCase = unit.trim().toUpperCase();
+        
         try {
             switch (measurementType) {
-                case "LengthUnit":      LengthUnit.valueOf(unit);      break;
-                case "VolumeUnit":      VolumeUnit.valueOf(unit);      break;
-                case "WeightUnit":      WeightUnit.valueOf(unit);      break;
-                case "TemperatureUnit": TemperatureUnit.valueOf(unit); break;
-                default: return false;
+                case "LengthUnit":
+                    for (LengthUnit u : LengthUnit.values()) {
+                        if (u.name().equals(unitUpperCase)) return true;
+                    }
+                    return false;
+                    
+                case "VolumeUnit":
+                    for (VolumeUnit u : VolumeUnit.values()) {
+                        if (u.name().equals(unitUpperCase)) return true;
+                    }
+                    return false;
+                    
+                case "WeightUnit":
+                    for (WeightUnit u : WeightUnit.values()) {
+                        if (u.name().equals(unitUpperCase)) return true;
+                    }
+                    return false;
+                    
+                case "TemperatureUnit":
+                    for (TemperatureUnit u : TemperatureUnit.values()) {
+                        if (u.name().equals(unitUpperCase)) return true;
+                    }
+                    return false;
+                    
+                default:
+                    return false;
             }
-            return true;
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             return false;
         }
     }
