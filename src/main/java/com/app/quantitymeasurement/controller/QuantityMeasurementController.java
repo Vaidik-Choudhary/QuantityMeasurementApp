@@ -29,7 +29,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/quantities")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://quantity-measurement-app-pi.vercel.app")
 @Tag(name = "Quantity Measurements", 
      description = "REST API for quantity measurement operations")
 public class QuantityMeasurementController {
